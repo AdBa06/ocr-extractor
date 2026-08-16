@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Invoice Extractor</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Invoice Extractor</h1>
+    </header>
+
+    <section class="panel setup">
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Select PDF invoices">
+        <input id="fileInput" type="file" accept="application/pdf,.pdf" multiple hidden>
+        <div class="upload-icon">⇧</div>
+        <strong>Drop invoice PDFs here</strong>
+        <span>or click to browse · multiple files accepted</span>
+      </div>
+      <div class="batch-fields">
+        <label>Need-By Date<input id="needBy" type="text" placeholder="DD/MM/YYYY"></label>
+        <label>GR Date<input id="grDate" type="text" placeholder="DD/MM/YYYY"></label>
+        <div class="setup-actions">
+          <button id="resetBtn" type="button">Reset</button>
+          <button id="extractBtn" class="primary" disabled>Extract rows</button>
+        </div>
+      </div>
+      <div id="fileList" class="file-list"></div>
+    </section>
+
+    <section id="results" class="panel results" hidden>
+      <div class="results-head">
+        <div><h2>Extracted rows</h2><p id="summary"></p></div>
+        <div class="actions">
+          <button id="copyHeader">Copy with header</button>
+          <button id="copyTsv" class="primary">Copy as TSV</button>
+        </div>
+      </div>
+      <div class="legend"><span class="review-dot"></span> Review needed — hover the row for details. Every cell is editable.</div>
+      <div class="table-wrap"><table id="dataTable"></table></div>
+      <div id="toast" role="status"></div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
